@@ -1,0 +1,29 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <UsingTask
+            TaskName="Elysia.Text.Json.BuildTask.JsonSerializerContextGenerationTask"
+            AssemblyFile="$(MSBuildThisFileDirectory)Elysia.Text.Json.BuildTask.dll"/>
+
+    <Target Name="GenerateJsonSerializerContext" Condition="'$(PublishAot)' == 'true' and '$(_IsPublishing)' == 'true'" BeforeTargets="CoreCompile">
+        <JsonSerializerContextGenerationTask
+                DefineConstants="$(DefineConstants)"
+                IntermediateOutputPath="$(IntermediateOutputPath)"
+                LangVersion="$(LangVersion)"
+                References="@(ReferencePathWithRefAssemblies)"
+                Sources="@(Compile)">
+            <Output TaskParameter="GeneratedFiles" ItemName="Compile"/>
+        </JsonSerializerContextGenerationTask>
+        <PropertyGroup>
+            <DefineConstantsBeforeCompile>$(DefineConstants)</DefineConstantsBeforeCompile>
+            <DefineConstants>$(DefineConstants);IS_PUBLISHING</DefineConstants>
+        </PropertyGroup>
+    </Target>
+
+    <Target Name="RestoreDefineConstants" Condition="'$(DefineConstantsBefore)' != ''" AfterTargets="CoreCompile">
+        <PropertyGroup>
+            <DefineConstants>$(DefineConstantsBeforeCompile)</DefineConstants>
+            <DefineConstantsBeforeCompile/>
+        </PropertyGroup>
+    </Target>
+
+</Project>

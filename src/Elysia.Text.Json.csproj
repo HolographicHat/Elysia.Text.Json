@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <Version>0.0.10</Version>
+        <Authors>HoloHat</Authors>
+        <Description>~</Description>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include=".\Elysia.Text.Json.targets"
+              Pack="true"
+              PackagePath="build"
+              Visible="false"/>
+        <None Include="..\artifacts\bin\Elysia.Text.Json.BuildTask\Release\netstandard2.0\Elysia.Text.Json.BuildTask.dll"
+              Pack="true"
+              PackagePath="build"
+              Visible="false"/>
+        <None Include="..\artifacts\bin\Elysia.Text.Json.SourceGeneration\Release\netstandard2.0\Elysia.Text.Json.SourceGeneration.dll"
+              Pack="true"
+              PackagePath="build"
+              Visible="false"/>
+        <None Include="..\artifacts\bin\Elysia.Text.Json.SourceGeneration\Release\netstandard2.0\Elysia.Text.Json.SourceGeneration.dll"
+              Pack="true"
+              PackagePath="analyzers/dotnet/cs"
+              Visible="false"/>
+    </ItemGroup>
+
+</Project>

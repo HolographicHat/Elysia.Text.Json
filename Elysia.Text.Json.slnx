@@ -1,0 +1,7 @@
+<Solution>
+    <Project Path="build/Elysia.Text.Json.BuildTask.csproj"/>
+    <Project Path="gen/Elysia.Text.Json.SourceGeneration.csproj"/>
+    <Project Path="src/Elysia.Text.Json.csproj"/>
+    <Project Path="tests/Elysia.Text.Json.SourceGeneration.TestLibrary/Elysia.Text.Json.SourceGeneration.TestLibrary.csproj"/>
+<!--    <Project Path="tests/Elysia.Text.Json.SourceGeneration.Tests/Elysia.Text.Json.SourceGeneration.Tests.csproj"/>-->
+</Solution>
